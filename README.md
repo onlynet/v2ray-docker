@@ -9,7 +9,7 @@ A v2ray docker image work with nginx for Arukas/IBM/okteto
   - CLIENT_ID (default ad806487-2d26-4636-98b6-ab85cc8521f7)
   - CLIENT_ALTERID (default 64)
   - CLIENT_WSPATH (default /ws)
-  - VER (default 4.19.1)
+  - VER (default 4.28.2)
 - don't need custom domain and ssl certificate
 - only cost 1 pods
 

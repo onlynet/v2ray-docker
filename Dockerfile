@@ -3,14 +3,9 @@ from nginx:latest
 ENV CLIENT_ID "ad806487-2d26-4636-98b6-ab85cc8521f7"
 ENV CLIENT_ALTERID 64
 ENV CLIENT_WSPATH "/ws"
-ENV VER=4.19.1
+ENV VER=4.28.2
 
-ADD conf/nginx.conf /etc/nginx/
-ADD conf/default.conf /etc/nginx/conf.d/
-ADD entrypoint.sh /etc/
-
-RUN apt-get update \
-	&& apt-get install -y --no-install-recommends wget unzip php-fpm php-curl php-cli php-mcrypt php-mysql php-readline
+RUN yum install -y nginx wget unzip
 
 RUN wget --no-check-certificate -O v2ray.zip https://github.com/v2ray/v2ray-core/releases/download/v$VER/v2ray-linux-64.zip \
 	&& unzip v2ray.zip \
@@ -33,6 +28,10 @@ RUN chmod -R 777 /var/log/nginx /var/cache/nginx /var/run \
 	&& chmod 777 /etc/entrypoint.sh \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& rm -rf /var/cache/apt/*
+
+ADD conf/nginx.conf /etc/nginx/
+ADD conf/default.conf /etc/nginx/conf.d/
+ADD entrypoint.sh /etc/
 
 RUN rm -rf /etc/localtime
 ADD conf/localtime /etc/
