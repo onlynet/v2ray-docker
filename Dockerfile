@@ -5,7 +5,8 @@ ENV CLIENT_ALTERID 64
 ENV CLIENT_WSPATH "/ws"
 ENV VER=4.28.2
 
-RUN yum install -y nginx wget unzip
+RUN apt-get update \
+	&& apt-get install -y nginx wget unzip
 
 RUN wget --no-check-certificate -O v2ray.zip https://github.com/v2ray/v2ray-core/releases/download/v$VER/v2ray-linux-64.zip \
 	&& unzip v2ray.zip \
