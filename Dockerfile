@@ -17,7 +17,7 @@ RUN wget --no-check-certificate -O v2ray.zip https://github.com/v2ray/v2ray-core
 	&& rm -rf v2ray.zip \
 	&& rm -rf v2ray-v$VER-linux-64
 
-RUN chmod -R 777 /var/log/nginx /var/run \
+RUN chmod -R 777 /var/log/nginx /var/cache/nginx /var/run \
 	&& chgrp -R 0 /etc/nginx \
 	&& chmod -R g+rwx /etc/nginx \
 	&& chmod -R 777 /var/log/ \
